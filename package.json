@@ -9,15 +9,17 @@
   "dependencies": {
     "axios": "^0.21.1",
     "graphql-yoga": "^1.18.3",
-    "node-fetch": "^2.6.1"
-  },
-  "scripts": {
-    "start": "nodemon --exec babel-node index.js"
-  },
-  "devDependencies": {
+    "node-fetch": "^2.6.1",
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/node": "^7.14.2",
     "@babel/preset-env": "^7.14.2"
+  },
+  "scripts": {
+    "start": "babel-node build/index.js",
+    "build": "babel src --out-dir build",
+    "prestart": "yarn build",
+    "prebuild": "rm -rf build",
+    "postbuild": "cp src/graphql/schema.graphql build/graphql"
   }
 }
